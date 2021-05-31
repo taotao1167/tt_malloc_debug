@@ -243,42 +243,44 @@ void free(void *ptr) {
 	__libc_free(ptr);
 #endif
 }
+#endif
+#if 1
 int main(){
 	char *str1 = NULL, *str2 = NULL, *str3 = NULL, *str4 = NULL;
 
 	init_malloc_debug();
 	str1 = (char *)my_malloc(5, __FILE__, __LINE__);
-	show_ram();
+	show_ram(1);
 	memset(str1, 0, 5);
 
 	str2 = (char *)my_malloc(5, __FILE__, __LINE__);
-	show_ram();
+	show_ram(1);
 	memset(str2, 0, 6);
 
 	str3 = (char *)my_malloc(5, __FILE__, __LINE__);
-	show_ram();
+	show_ram(1);
 	memset(str3, 0, 5);
 	str3 = (char *)my_realloc(str3, 10, __FILE__, __LINE__);
-	show_ram();
+	show_ram(1);
 	memset(str3, 0, 10);
 
 	str4 = (char *)my_malloc(5, __FILE__, __LINE__);
-	show_ram();
+	show_ram(1);
 	memset(str4, 0, 5);
 	str4 = (char *)my_realloc(str3, 10, __FILE__, __LINE__);
-	show_ram();
+	show_ram(1);
 	memset(str4, 0, 11);
 
 	my_free(str1, __FILE__, __LINE__);
-	show_ram();
+	show_ram(1);
 	my_free(str2, __FILE__, __LINE__);
-	show_ram();
+	show_ram(1);
 	my_free(str3, __FILE__, __LINE__);
-	show_ram();
+	show_ram(1);
 	my_free(str4, __FILE__, __LINE__);
-	show_ram();
+	show_ram(1);
 	my_free((void *)0x8888, __FILE__, __LINE__);
-	show_ram();
+	show_ram(1);
 }
 
 #endif
